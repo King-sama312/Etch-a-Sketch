@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 960px;
+  height: 960px;
+  border: 1px solid #000;
+  margin: auto;
+}
+
+.grid-square {
+  flex: 1 0 auto;
+  width: calc(100% / 16); /* each square takes 1/16 of the row */
+  height: calc(100% / 16);
+  border: 1px solid #ccc;
+}
+
