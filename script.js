@@ -1,22 +1,33 @@
 const container = document.getElementById('container');
 
-for (let i = 0; i < 16 * 16; i++) {
-    const square = document.createElement('div');
-    square.classList.add('grid-square');
-    container.appendChild(square);
+
+function createGrid(size) {
+    container.innerHTML = ''
+
+    for (let i = 0; i < size * size; i++) {
+        const square = document.createElement('div');
+        square.classList.add('grid-square');
+        square.style.width = `calc(100% / ${size} )`
+        square.style.height = `calc(100% / ${size} )`
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = 'black'
+        })
+
+        container.appendChild(square);
+    }
 }
 
-const squares = document.querySelectorAll(".grid-square")
+createGrid(16)
 
-squares.forEach(square => {
-    square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = 'black'
-    })
+const button = document.getElementById('resizeBtn')
+button.addEventListener('click', () => {
+    let newSize = prompt('Enter new grid size (max 100)')
+    newSize = parseInt(newSize)
 
-    square.addEventListener('mousedown', (event) => {
-        if (event.button === 0) {
-            square.style.backgroundColor = 'transparent'
-        }
+    if (isNaN(newSize) || newSize < 1 || newSize > 100) {
+        alert('Please enter a valid number between 1 and 100')
+        return
+    }
 
-    })
+    createGrid(newSize)
 })
