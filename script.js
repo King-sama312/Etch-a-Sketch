@@ -1,6 +1,15 @@
-const container = document.getElementById('container');
+// script.js
+// Function: generateRandomColor
+function generateRandomColor() {
+    // Generate vibrant, varied colors with good contrast
+    const r = Math.floor(Math.random() * 200);
+    const g = Math.floor(Math.random() * 200);
+    const b = Math.floor(Math.random() * 200);
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
-
+// script.js
+// Function: createGrid
 function createGrid(size) {
     container.innerHTML = ''
 
@@ -10,17 +19,19 @@ function createGrid(size) {
         square.style.width = `calc(100% / ${size} )`
         square.style.height = `calc(100% / ${size} )`
         square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = 'black'
+            square.style.backgroundColor = generateRandomColor()
         })
 
         container.appendChild(square);
     }
 }
 
-createGrid(16)
+// script.js
+newSize = prompt('Enter new grid size (max 100)')
 
-const button = document.getElementById('resizeBtn')
-button.addEventListener('click', () => {
+// script.js
+// Function: handleResize
+() => {
     let newSize = prompt('Enter new grid size (max 100)')
     newSize = parseInt(newSize)
 
@@ -30,4 +41,17 @@ button.addEventListener('click', () => {
     }
 
     createGrid(newSize)
-})
+}
+
+// script.js
+square = document.createElement('div')
+
+// script.js
+container = document.getElementById('container')
+
+// script.js
+i = 0
+
+// script.js
+button = document.getElementById('resizeBtn')
+button.addEventListener('click', handleResize)
